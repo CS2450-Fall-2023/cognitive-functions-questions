@@ -11,5 +11,5 @@ python3 main.py
 ```
 
 ## TODO:
-* In `result_info.json` could have `content` separated into a list of string (paragraphs), rather than one giant paragraph.
+* `result_info.json` could have `content` separated into a list of string (paragraphs), rather than one giant paragraph.
 * Make the `main` user interface function a little cleaner.
