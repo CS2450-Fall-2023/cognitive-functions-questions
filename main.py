@@ -27,6 +27,7 @@ def main() -> None:
     
     value_stack: List[str] = []
     invalid_input = lambda inp : Fmt.BOLD + Fmt.RED + f"{inp} is not a valid input." + Fmt.END
+    err: Optional[str] = None
 
     # Running the TUI
     while True:
@@ -43,6 +44,10 @@ def main() -> None:
                 print(Fmt.RED+f"{i + 1}: "+Fmt.END+Fmt.BOLD+Fmt.UNDERLINE+f"{q.title}"+Fmt.END)
                 print(f"{q.content}\n\n")
         
+        if err is not None:
+            print(err)
+            err = None
+
         usr_in = input("> ")
         if usr_in in EXIT_PHRASES:
             break;
@@ -55,18 +60,18 @@ def main() -> None:
                     value_stack.pop()
                 question = question.parent
                 continue
-            print(Fmt.BOLD + Fmt.RED + "You are at the top question. You cannot go back." + Fmt.END)
+            err = Fmt.BOLD + Fmt.RED + "You are at the top question. You cannot go back." + Fmt.END
             continue
 
         # Going forward
         try:
             answer_value = int(usr_in) - 1 # Answers are given 1-indexed :)
         except ValueError:
-            print(invalid_input(usr_in))
+            err = invalid_input(usr_in)
             continue
         
         if answer_value < 0 or answer_value >= len(question.children):
-            print(invalid_input(usr_in))
+            err = invalid_input(usr_in)
             continue
 
         # Go forward in tree
