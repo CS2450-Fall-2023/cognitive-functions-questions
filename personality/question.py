@@ -1,5 +1,4 @@
 from typing import Optional, List, Any, Tuple
-from personality.mbti import *
 
 class Question:
     '''
