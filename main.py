@@ -2,11 +2,17 @@
 This is just a TUI to interact with the `personality` module
 
 To traverse the questions in a more general way, it might be easier to
-user the visitor pattern in the future
+put traversal code in the `Question` class in ther future. Maybe
+create a new `QuestionWrapper` class, which holds a `Question` tree.
+`QuestionWrapper` would have `advance` and `previous` methods to
+traverse the tree. `main`, or any GUI/TUI/anyone using the package would
+only every interact with the `QuestionWrapper` class.
+
+This is just one possibility, though.
 '''
 from personality import Question
 from text_format import TextFormat as Fmt
-from typing import List
+from typing import List, Optional
 import json
 import os
 
