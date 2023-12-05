@@ -32,7 +32,7 @@ def main() -> None:
     prompt += " to quit, or type "+Fmt.BOLD + f"`{BACK_PHRASES[0]}`" + Fmt.END + " to go to the previous question"
     
     value_stack: List[str] = []
-    invalid_input = lambda inp : Fmt.BOLD + Fmt.RED + f"{inp} is not a valid input." + Fmt.END
+    invalid_input = lambda inp : Fmt.BOLD + Fmt.RED + f"`{inp}` is not a valid input." + Fmt.END
     err: Optional[str] = None
 
     # Running the TUI
